@@ -1,13 +1,17 @@
-# Use a small Python image
-FROM python:3.11-slim
+# Use Python base image
+FROM python:3.9-slim
 
+# Set working directory
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy all files to container
+COPY . .
+
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
-
+# Expose port
 EXPOSE 5000
 
+# Run app
 CMD ["python", "app.py"]
